@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Fighter",
+    "stats": {
+      "hitpoints": 100,
+      "strength": 5
+    },
+    "actions": [
+      {
+        "type": "attack",
+        "name": "Stroke",
+        "stat": "strength",
+        "difficulty": "15",
+        "damage_range": [5, 15]
+      }
+    ]
+  }
+]
