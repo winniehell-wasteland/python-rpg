@@ -1,21 +1,21 @@
 # Creating an action
-    >>> from rpg.creatures import Creature
-    >>> somebody = Creature(name='Somebody', stats={'strength': 30})
-
     >>> from rpg.actions.Attack import Attack
 
-    >>> tackle = Attack(creature=somebody, name='Tackle', stat='strength', difficulty=25, damage_range=(10,10))
+    >>> tackle = Attack(name='Tackle', stat='strength', difficulty=25, damage_range=(10,10))
     >>> print(tackle)
-    Somebody: Tackle
+    Tackle
 
 # Executing an action
+    >>> from rpg.creatures import Creature
+    >>> somebody = Creature(name='Somebody', stats={'strength': 30})
     >>> anybody = Creature(name='Anybody', stats={'hitpoints' : 100})
 
-    >>> tackle.execute(target=anybody)
-    >>> print(anybody.stats['hitpoints'])
+    >>> somebody.actions.add(tackle)
+    >>> somebody.actions.tackle(anybody)
+    >>> print(anybody.hitpoints)
     90
 
-    >>> somebody.stats['strength'] = 0
-    >>> tackle.execute(target=anybody)
-    >>> print(anybody.stats['hitpoints'])
+    >>> somebody.strength = 0
+    >>> somebody.actions.tackle(anybody)
+    >>> print(anybody.hitpoints)
     90

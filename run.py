@@ -12,8 +12,13 @@ monster = all_monsters[0]
 while player.is_alive() and monster.is_alive():
     pprint(player)
     pprint(monster)
-    player.actions[0].execute(monster)
-    monster.actions[0].execute(player)
+
+    player_action = next(iter(player.actions.values()))
+    player_action(monster)
+
+    monster_action = next(iter(monster.actions.values()))
+    monster_action(player)
+
     print()
 
 if not player.is_alive():

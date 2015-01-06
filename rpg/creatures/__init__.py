@@ -19,7 +19,7 @@ def load(file_name: str) -> list:
             for action_data in creature_actions:
                 action_type = action_data.pop('type').capitalize()
                 action_class = getattr(importlib.import_module('actions.'+action_type), action_type)
-                creature.actions.append(action_class(creature=creature, **action_data))
+                creature.actions.add(action_class(**action_data))
 
             loaded_creatures.append(creature)
 

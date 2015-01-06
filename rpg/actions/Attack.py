@@ -1,36 +1,32 @@
-import random
-
-from creatures import Creature
-
-
 __author__ = 'winniehell'
+
+import random
 
 
 class Attack:
-    def __init__(self, creature: Creature, name: str, stat: str, difficulty: int, damage_range: tuple):
-        self.creature = creature
-        self.name = name
-        self.stat = stat
-        self.difficulty = int(difficulty)
+    def __init__(self, name: str, stat: str, difficulty: int, damage_range: tuple):
+        self._name = name
+        self._stat = stat
+        self._difficulty = int(difficulty)
         assert len(damage_range) == 2
-        self.damage_range = damage_range
+        self._damage_range = damage_range
 
-    def execute(self, target : Creature):
+    def __call__(self, executor, target):
         attack_dice = random.randint(0, 20)
-        is_hitting = (attack_dice + self.creature.stats[self.stat]) > self.difficulty
+        is_hitting = (attack_dice + getattr(executor, self._stat)) > self._difficulty
 
         if not is_hitting:
             return
 
         if attack_dice == 20:
-            damage = max(*self.damage_range)
+            damage = max(*self._damage_range)
         else:
-            damage = random.randint(*self.damage_range)
+            damage = random.randint(*self._damage_range)
 
-        target.change_stat('hitpoints', -damage)
+        target.hitpoints -= damage
 
     def __repr__(self):
-        return '{creature}: {name}'.format(
-            creature=self.creature.name,
-            name=self.name
-        )
+        return self._name.lower()
+
+    def __str__(self):
+        return self._name
