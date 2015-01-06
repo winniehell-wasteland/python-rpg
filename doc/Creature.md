@@ -1,13 +1,13 @@
 # Creating of a creature
     >>> from rpg.creatures import Creature
-    >>> somebody = Creature(name='Somebody', stats={})
+    >>> somebody = Creature(name='Somebody', stats={}, actions=[])
     >>> print(somebody)
-    Somebody () []
+    Somebody (Actions: [])
 
 # Creating of a creature with stats
-    >>> anybody = Creature(name='Anybody', stats={'hitpoints': 100, 'endurance': 7})
+    >>> anybody = Creature(name='Anybody', stats={'hitpoints': 100, 'endurance': 7}, actions=[])
     >>> print(anybody)
-    Anybody (Endurance: 7, Hitpoints: 100) []
+    Anybody (Endurance: 7, Hitpoints: 100, Actions: [])
 
 # Accessing stats of a creature
     >>> print(anybody.endurance)

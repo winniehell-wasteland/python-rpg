@@ -7,7 +7,7 @@
 
 # Using an item
     >>> from rpg.creatures import Creature
-    >>> somebody = Creature(name='Somebody', stats={'hitpoints': 100})
+    >>> somebody = Creature(name='Somebody', stats={'hitpoints': 100}, actions=[])
     >>> somebody.hitpoints -= 20
 
     >>> potion.use(target=somebody)

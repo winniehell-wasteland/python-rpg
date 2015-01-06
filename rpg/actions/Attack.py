@@ -11,7 +11,7 @@ class Attack:
         assert len(damage_range) == 2
         self._damage_range = damage_range
 
-    def __call__(self, executor, target):
+    def execute(self, executor, target):
         attack_dice = random.randint(0, 20)
         is_hitting = (attack_dice + getattr(executor, self._stat)) > self._difficulty
 
@@ -26,7 +26,4 @@ class Attack:
         target.hitpoints -= damage
 
     def __repr__(self):
-        return self._name.lower()
-
-    def __str__(self):
         return self._name
