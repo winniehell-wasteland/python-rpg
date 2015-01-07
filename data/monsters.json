@@ -14,5 +14,21 @@
         "damage_range": [5, 10]
       }
     ]
+  },
+  {
+    "name": "Golem",
+    "stats": {
+      "hitpoints": 150,
+      "strength": 10
+    },
+    "actions": [
+      {
+        "type": "attack",
+        "name": "Mud Crush",
+        "stat": "strength",
+        "difficulty": 25,
+        "damage_range": [10, 20]
+      }
+    ]
   }
 ]
